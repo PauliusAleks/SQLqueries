@@ -113,7 +113,6 @@ namespace Assignment2_BackEnd
         {
             customers.ForEach(customer => { PrintCustomer(customer); });
         }
-
         public static void PrintCustomer(Customer customer)
         {
             Console.WriteLine($"Customer id: {customer.CustomerId}");
