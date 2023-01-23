@@ -1,0 +1,20 @@
+--Query for creating tables in SuperheroesDb--
+CREATE TABLE Superhero (
+ID INT NOT NULL IDENTITY(1,1) UNIQUE,
+Superhero_Name NVARCHAR(50) NOT NULL,
+Alias NVARCHAR(50) NOT NULL,
+Origin NVARCHAR(50),
+PRIMARY KEY (ID)
+);
+
+CREATE TABLE Assistant (
+ID INT NOT NULL IDENTITY(1,1) UNIQUE,
+Assistant_Name NVARCHAR(50) NOT NULL,
+);
+
+CREATE TABLE [Power] (
+ID INT NOT NULL IDENTITY(1,1) UNIQUE,
+Power_Name NVARCHAR(50),
+[Description] NVARCHAR(50),
+PRIMARY KEY(ID)
+);
