@@ -1,4 +1,5 @@
 ﻿using Assignment2_BackEnd.Models;
+using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,13 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepository
+namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder
 {
     public class CustomerSpenderRepository : ICustomerSpenderRepository
     {
         public List<CustomerSpender> GetHighestSpenders()
         {
+            ICustomerRepository customerRepository = new CustomerRepository();
             List<CustomerSpender> customerSpenders = new List<CustomerSpender>();
             string sqlQuery = "SELECT Customer.CustomerId, SUM(Invoice.Total) FROM Customer " +
                               "INNER JOIN Invoice " +
@@ -32,8 +34,10 @@ namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepository
                             while (reader.Read())
                             {
                                 int customerId = reader.GetInt32(0);
+                                Customer customer = customerRepository.GetCustomerById(customerId);
                                 double invoiceTotal = (double)reader.GetDecimal(1);
-                                customerSpenders.Add(new CustomerSpender(customerId, invoiceTotal));
+                                customerSpenders.Add(new CustomerSpender(customer, invoiceTotal));
+
                             }
                         }
                     }
@@ -42,7 +46,7 @@ namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepository
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
+                throw new Exception();
             }
             return customerSpenders;
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories.CustomerGenreRepository
+namespace Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder
 {
     public interface ICustomerGenreRepository
     {

@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories.CustomerRepository
+namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
 {
     internal class CustomerRepository : ICustomerRepository
     {
@@ -140,8 +140,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepository
         {
             Customer customer = new Customer();
             string sqlQuery = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer " +
-                              $"WHERE FirstName LIKE @FirstName% " +
-                              $"AND LastName LIKE @LastName%";
+                              $"WHERE FirstName LIKE @FirstName " +
+                              $"AND LastName LIKE @LastName";
             using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
             {
                 connection.Open();

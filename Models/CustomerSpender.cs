@@ -10,12 +10,12 @@ namespace Assignment2_BackEnd.Models
     public class CustomerSpender
     {
         //public int InvoiceId { get; set; }
-        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
         public double Total { get; set; }
 
-        public CustomerSpender(int customerId, double total)
+        public CustomerSpender(Customer customer, double total)
         {
-            CustomerId = customerId;
+            Customer = customer;
             Total = total;
         }
 

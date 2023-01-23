@@ -1,8 +1,8 @@
 ﻿using Assignment2_BackEnd.Models;
-using Assignment2_BackEnd.Repositories.CustomerCountryRepository;
-using Assignment2_BackEnd.Repositories.CustomerGenreRepository;
-using Assignment2_BackEnd.Repositories.CustomerRepository;
-using Assignment2_BackEnd.Repositories.CustomerSpenderRepository;
+using Assignment2_BackEnd.Repositories.CustomerCountryRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder;
 using System;
 
 class Program
@@ -24,11 +24,11 @@ class Program
         ICustomerSpenderRepository customerSpenderRepository = new CustomerSpenderRepository();
         ICustomerGenreRepository customerGenreRepository = new CustomerGenreRepository();
         //PrintAllRecords(customerRepository);
-        //PrintRecord(customerRepository, 62);
-        //PrintCustomer(customerRepository.GetCustomerByName("da", "pee"));
+        //PrintRecord(customerRepository, 60);
+        //PrintCustomer(customerRepository.GetCustomerByName("Kara", "Nielsen"));
         //PrintCustomers(customerRepository.GetPageOfCustomers(5, 10));
         //insertRecord(customerRepository);
-        customerRepository.UpdateCustomer(customer);
+        //customerRepository.UpdateCustomer(customer);
         //customerRepository.DeleteCustomer(62);
         /*
         List<CustomerCountry> list = customerCountryRepository.GetCountryNames();
@@ -42,7 +42,7 @@ class Program
         List<CustomerSpender> list = customerSpenderRepository.GetHighestSpenders();
         foreach (var item in list)
         {
-            Console.WriteLine($"{item.CustomerId} : {item.Total}");
+            Console.WriteLine($"{item.Customer.CustomerId} : {item.Total}");
         }
         */
 
@@ -52,9 +52,6 @@ class Program
             CustomerId = 5
         }).ForEach(s => Console.WriteLine(s.GenreName));
         */
-
-
-
 
     }
     static void insertRecord(ICustomerRepository customerRepository)
