@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Repositories.CustomerCountryRepositoryFolder
 {
-    internal interface ICustomerCountryRepository
+    public interface ICustomerCountryRepository
     {
         public List<CustomerCountry> GetCountryNames();
     }

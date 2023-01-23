@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
 {
-    internal interface ICustomerRepository
+    public interface ICustomerRepository
     {
         public List<Customer> GetAllCustomers();
         public Customer GetCustomerById(int id);
