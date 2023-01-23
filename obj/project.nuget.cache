@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "krzxZk9Hldd807PmpPbV9sO0QcZDqqs3AdccZT2AzL1HxV3Cd/XFL0LOBbeeESSG0wokrSiLyFLZ8E/4KWY1yg==",
+  "dgSpecHash": "8I4lhC3fBlZjKnqxsiwMq7NU1A7zSYSwXfRLHuRnHwl9hOqU2RezyPnSq/TnNBap9EDCB+rWde+axrWjaxSPzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PAleks\\Desktop\\Assignment2_BackEnd\\Assignment2_BackEnd\\Assignment2_BackEnd.csproj",
+  "projectFilePath": "C:\\Users\\PAleks\\source\\repos\\PauliusBackendAssignment2\\Assignment2_BackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PAleks\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\PAleks\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

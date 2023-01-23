@@ -2008,11 +2008,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PAleks\\Desktop\\Assignment2_BackEnd\\Assignment2_BackEnd\\Assignment2_BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\PAleks\\source\\repos\\PauliusBackendAssignment2\\Assignment2_BackEnd.csproj",
       "projectName": "Assignment2_BackEnd",
-      "projectPath": "C:\\Users\\PAleks\\Desktop\\Assignment2_BackEnd\\Assignment2_BackEnd\\Assignment2_BackEnd.csproj",
+      "projectPath": "C:\\Users\\PAleks\\source\\repos\\PauliusBackendAssignment2\\Assignment2_BackEnd.csproj",
       "packagesPath": "C:\\Users\\PAleks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PAleks\\Desktop\\Assignment2_BackEnd\\Assignment2_BackEnd\\obj\\",
+      "outputPath": "C:\\Users\\PAleks\\source\\repos\\PauliusBackendAssignment2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PAleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
