@@ -37,7 +37,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder
                                 Customer customer = customerRepository.GetCustomerById(customerId);
                                 double invoiceTotal = (double)reader.GetDecimal(1);
                                 customerSpenders.Add(new CustomerSpender(customer, invoiceTotal));
-
                             }
                         }
                     }
@@ -45,7 +44,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder
             }
             catch (Exception ex)
             {
-
                 throw new Exception();
             }
             return customerSpenders;

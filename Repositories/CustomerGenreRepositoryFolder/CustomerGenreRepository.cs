@@ -48,10 +48,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
-
             return resultList;
         }
     }

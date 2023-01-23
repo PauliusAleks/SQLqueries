@@ -17,7 +17,6 @@ namespace Assignment2_BackEnd.Repositories
             connectionStringBuilder.IntegratedSecurity = true;
             connectionStringBuilder.TrustServerCertificate = true;
             return connectionStringBuilder.ToString();
-
         }
     }
 }

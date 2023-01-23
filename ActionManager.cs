@@ -92,7 +92,7 @@ namespace Assignment2_BackEnd
             List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerSpenderRepository.GetHighestSpenders();
             Console.WriteLine("List of customers and their invoice total:");
             listOfCustomersAndTheirInvoiceTotal
-                .ForEach(item => Console.WriteLine($"{item.Customer.CustomerId} : {item.Total}"));
+                .ForEach(item => Console.WriteLine($"ID({item.Customer.CustomerId}),First name ({item.Customer.FirstName}) : {item.Total}"));
         }
         public static void printListOfFavoriteCustomerGenres(ICustomerGenreRepository customerGenreRepository)
         {

@@ -36,7 +36,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
             return success;
@@ -59,7 +58,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message); ;
             }
             return success;
@@ -99,7 +97,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return customers;
         }
-
         public Customer GetCustomerById(int customerId)
         {
             Customer customer = new Customer();
@@ -135,7 +132,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return customer;
         }
-
         public Customer GetCustomerByName(string firstName, string lastName)
         {
             Customer customer = new Customer();
@@ -232,7 +228,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
             return success;

@@ -19,6 +19,5 @@ namespace Assignment2_BackEnd.Models
             TrackId = trackId;
             InvoiceId = invoiceId;
         }
-
     }
 }

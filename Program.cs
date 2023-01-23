@@ -5,7 +5,6 @@ using Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder;
 using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
 using Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder;
 using System;
-
 class Program
 {
     static public void Main(string[] args)
@@ -15,9 +14,6 @@ class Program
         ICustomerCountryRepository customerCountryRepository = new CustomerCountryRepository();
         ICustomerSpenderRepository customerSpenderRepository = new CustomerSpenderRepository();
         ICustomerGenreRepository customerGenreRepository = new CustomerGenreRepository();
-        actionManager.PrintAllCustomers(customerRepository);
+        ActionManager.printCustomersAndTheirInvoiceTotal(customerSpenderRepository);
     }
-
 }
-
-

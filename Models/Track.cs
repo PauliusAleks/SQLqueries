@@ -11,13 +11,11 @@ namespace Assignment2_BackEnd.Models
     {
         public int TrackId { get; set; }
         public int GenreId { get; set; }
-
         public Track() { }
         public Track(int trackId, int genreId)
         {
             TrackId = trackId;
             GenreId = genreId;
         }
-
     }
 }

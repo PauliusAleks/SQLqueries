@@ -15,7 +15,6 @@ namespace Assignment2_BackEnd.Models
         public string? PostalCode { get; set; }
         public string? Phone { get; set; }
         public string Email { get; set; }
-
         public Customer() { }
         public Customer(int customerId, string firstName, string lastName, string? country, string? postalCode, string? phone, string email)
         {
@@ -27,14 +26,5 @@ namespace Assignment2_BackEnd.Models
             Phone = phone;
             Email = email;
         }
-
-
-        //public string? Company { get; set; }
-        //public string? Address { get; set; }
-        //public string? City { get; set; }
-        //public string? State { get; set; }
-        //public string? Fax { get; set; }
-        //public int? SupportRepId { get; set; }
-
     }
 }

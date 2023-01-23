@@ -10,7 +10,6 @@ namespace Assignment2_BackEnd.Models
     {
         public int GenreId { get; set; }
         public string Name { get; set; }
-
         public Genre(int genreId, string name)
         {
             GenreId = genreId;
