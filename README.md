@@ -1,3 +1,0 @@
-# Assignment2Backend
-
-Test
