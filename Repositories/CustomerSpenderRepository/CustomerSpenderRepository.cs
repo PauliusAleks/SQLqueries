@@ -1,0 +1,50 @@
+﻿using Assignment2_BackEnd.Models;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepository
+{
+    public class CustomerSpenderRepository : ICustomerSpenderRepository
+    {
+        public List<CustomerSpender> GetHighestSpenders()
+        {
+            List<CustomerSpender> customerSpenders = new List<CustomerSpender>();
+            string sqlQuery = "SELECT Customer.CustomerId, SUM(Invoice.Total) FROM Customer " +
+                              "INNER JOIN Invoice " +
+                              "ON Customer.CustomerId = Invoice.CustomerId " +
+                              "GROUP BY Customer.CustomerId " +
+                              "ORDER BY SUM(Invoice.Total) DESC";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int customerId = reader.GetInt32(0);
+                                double invoiceTotal = (double)reader.GetDecimal(1);
+                                customerSpenders.Add(new CustomerSpender(customerId, invoiceTotal));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            return customerSpenders;
+        }
+    }
+}
