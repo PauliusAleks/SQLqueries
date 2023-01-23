@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assignment2_BackEnd.Models.InvoiceModel;
-using Assignment2_BackEnd.Models.TrackModel;
+using Assignment2_BackEnd.Models;
 
-namespace Assignment2_BackEnd.Models.InvoiceLineModel
+namespace Assignment2_BackEnd.Models
 {
-    internal class InvoiceLine : IInvoiceLine, ITrack, IInvoice
+    internal class InvoiceLine
     {
         public int InvoiceLineId { get; set; }
         public int TrackId { get; set; }

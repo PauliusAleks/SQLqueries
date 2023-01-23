@@ -27,7 +27,7 @@ namespace Assignment2_BackEnd.Repositories.CustomerCountryRepository
                         {
                             while (reader.Read())
                             {
-                                string country = reader.GetString(0);
+                                string country = reader.IsDBNull(0) ? "NULL" : reader.GetString(0);
                                 int number = reader.GetInt32(1);
                                 countriesWithCustomerNumbers.Add(new CustomerCountry(country, number));
                             }

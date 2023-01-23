@@ -1,5 +1,4 @@
 ﻿using Assignment2_BackEnd.Models;
-using Assignment2_BackEnd.Models.CustomerModel;
 using Assignment2_BackEnd.Repositories.CustomerCountryRepository;
 using Assignment2_BackEnd.Repositories.CustomerGenreRepository;
 using Assignment2_BackEnd.Repositories.CustomerRepository;
@@ -10,9 +9,9 @@ class Program
 {
     static public void Main(string[] args)
     {
-        ICustomer customer = new Customer()
+        Customer customer = new Customer()
         {
-            CustomerId = 62,
+            CustomerId = 1,
             FirstName = "Kimberly",
             LastName = "Colaste",
             Country = "Norway",
@@ -29,7 +28,7 @@ class Program
         //PrintCustomer(customerRepository.GetCustomerByName("da", "pee"));
         //PrintCustomers(customerRepository.GetPageOfCustomers(5, 10));
         //insertRecord(customerRepository);
-        //customerRepository.UpdateCustomer(customer);
+        customerRepository.UpdateCustomer(customer);
         //customerRepository.DeleteCustomer(62);
         /*
         List<CustomerCountry> list = customerCountryRepository.GetCountryNames();
@@ -38,20 +37,20 @@ class Program
             Console.WriteLine($"{item.Country} : {item.NumberOfCustomers}");
         }
         */
-
+        /*
         List<CustomerSpender> customerSpenders = customerSpenderRepository.GetHighestSpenders();
         List<CustomerSpender> list = customerSpenderRepository.GetHighestSpenders();
         foreach (var item in list)
         {
             Console.WriteLine($"{item.CustomerId} : {item.Total}");
         }
-
+        */
 
         /*
         customerGenreRepository.GetFavoriteGenre(new Customer()
         {
             CustomerId = 5
-        }).ForEach(s => Console.WriteLine(s));
+        }).ForEach(s => Console.WriteLine(s.GenreName));
         */
 
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Models.GenreModel
+namespace Assignment2_BackEnd.Models
 {
-    internal class Genre : IGenre
+    internal class Genre
     {
         public int GenreId { get; set; }
         public string Name { get; set; }

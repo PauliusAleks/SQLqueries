@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Models.CustomerModel
+namespace Assignment2_BackEnd.Models
 {
-    public class Customer : ICustomer
+    public class Customer
     {
         public int CustomerId { get; set; }
         public string FirstName { get; set; }

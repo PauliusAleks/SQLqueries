@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assignment2_BackEnd.Models.CustomerModel;
-using Assignment2_BackEnd.Models.InvoiceModel;
+using Assignment2_BackEnd.Models;
 
 namespace Assignment2_BackEnd.Models
 {

@@ -1,4 +1,4 @@
-﻿using Assignment2_BackEnd.Models.CustomerModel;
+﻿using Assignment2_BackEnd.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace Assignment2_BackEnd.Repositories.CustomerGenreRepository
 {
     public interface ICustomerGenreRepository
     {
-        public List<string> GetFavoriteGenre(Customer customer);
+        public List<CustomerGenre> GetFavoriteGenre(Customer customer);
     }
 }
