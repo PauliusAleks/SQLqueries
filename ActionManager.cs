@@ -1,0 +1,152 @@
+﻿using Assignment2_BackEnd.Models;
+using Assignment2_BackEnd.Repositories.CustomerCountryRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
+using Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment2_BackEnd
+{
+    public class ActionManager
+    {
+        public static void PrintAllCustomers(ICustomerRepository customerRepository)
+        {
+            PrintCustomers(customerRepository.GetAllCustomers());
+        }
+        public static void PrintPageOfCustomer(ICustomerRepository customerRepository)
+        {
+            PrintCustomers(customerRepository.GetPageOfCustomers(10, 10));
+        }
+        public static void PrintCustomerById(ICustomerRepository customerRepository)
+        {
+            PrintCustomer(customerRepository.GetCustomerById(10));
+        }
+        public static void PrintCustomerByFirstNameAndLastName(ICustomerRepository customerRepository)
+        {
+            PrintCustomer(customerRepository.GetCustomerByName("Kara", "Nielsen"));
+        }
+        public static void insertCustomer(ICustomerRepository customerRepository)
+        {
+            Customer customer = new Customer()
+            {
+                FirstName = "",
+                LastName = "",
+                Country = "",
+                PostalCode = "",
+                Phone = "",
+                Email = ""
+            };
+            if (customerRepository.AddCustomer(customer))
+            {
+                Console.WriteLine("Customer added!");
+                PrintCustomer(customer);
+            }
+            else
+            {
+                Console.WriteLine("Customer was not added!");
+            }
+        }
+        public static void updateCustomer(ICustomerRepository customerRepository)
+        {
+            Customer customerToUpdate = new Customer()
+            {
+                CustomerId = 1,
+                FirstName = "",
+                LastName = "",
+                Country = "",
+                PostalCode = "",
+                Phone = "",
+                Email = ""
+            };
+            if (customerRepository.AddCustomer(customerToUpdate))
+            {
+                Console.WriteLine("Customer was updated!");
+            }
+            else
+            {
+                Console.WriteLine("Customer was not updated!");
+            }
+        }
+        public static void deleteCustomer(ICustomerRepository customerRepository)
+        {
+            Customer customerToDelete = new Customer()
+            {
+                CustomerId = 64,
+                FirstName = "",
+                LastName = "",
+                Country = "",
+                PostalCode = "",
+                Phone = "",
+                Email = ""
+            };
+            if (customerRepository.DeleteCustomer(customerToDelete))
+            {
+                Console.WriteLine("Customer was deleted!");
+            }
+            else
+            {
+                Console.WriteLine("Customer was not deleted!");
+            }
+        }
+        public static void printCountriesAndNumberOfCustomers(ICustomerCountryRepository customerCountryRepository)
+        {
+            List<CustomerCountry> listOfCountriesAndNumberOfCustomers = customerCountryRepository.GetCountryNames();
+            Console.WriteLine("List of countries and number of customers.");
+            listOfCountriesAndNumberOfCustomers
+                .ForEach(item => Console.WriteLine($"{item.Country} : {item.NumberOfCustomers}"));
+
+        }
+        public static void printCustomersAndTheirInvoiceTotal(ICustomerSpenderRepository customerSpenderRepository)
+        {
+            List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerSpenderRepository.GetHighestSpenders();
+            Console.WriteLine("List of customers and their invoice total:");
+            listOfCustomersAndTheirInvoiceTotal
+                .ForEach(item => Console.WriteLine(
+                    $"ID({item.Customer.CustomerId})," +
+                    $"First name ({item.Customer.FirstName}) : {item.Total}"));
+        }
+        public static void printListOfFavoriteCustomerGenres(ICustomerGenreRepository customerGenreRepository)
+        {
+            Customer customerToFindGenres = new Customer()
+            {
+                CustomerId = 12,
+                FirstName = "",
+                LastName = "",
+                Country = "",
+                PostalCode = "",
+                Phone = "",
+                Email = ""
+            };
+            List<CustomerGenre> customerGenre = customerGenreRepository.GetFavoriteGenre(customerToFindGenres);
+
+            if (customerGenre[0].QuanitityFavoriteGenreRecordsBought == customerGenre[1].QuanitityFavoriteGenreRecordsBought)
+            {
+                Console.WriteLine(customerGenre[0].GenreName);
+                Console.WriteLine(customerGenre[1].GenreName);
+            }
+            else
+            {
+                Console.WriteLine(customerGenre[0].GenreName);
+            }
+        }
+        public static void PrintCustomers(List<Customer> customers)
+        {
+            customers.ForEach(customer => { PrintCustomer(customer); });
+        }
+        public static void PrintCustomer(Customer customer)
+        {
+            Console.WriteLine($"Customer id: {customer.CustomerId}");
+            Console.WriteLine($"First name: {customer.FirstName}");
+            Console.WriteLine($"Last name: {customer.LastName}");
+            Console.WriteLine($"Phone number: {customer.Phone}");
+            Console.WriteLine($"Email: {customer.Email}");
+            Console.WriteLine($"Country: {customer.Country}");
+            Console.WriteLine($"Postal code: {customer.PostalCode}");
+            Console.WriteLine("##################################################");
+        }
+    }
+}
