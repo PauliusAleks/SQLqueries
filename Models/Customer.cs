@@ -16,5 +16,7 @@ namespace Assignment2_BackEnd.Models
         public string? Phone { get; set; }
         public string Email { get; set; }
 
+        public ICollection<Invoice> Invoices { get; set; }
+
     }
 }
