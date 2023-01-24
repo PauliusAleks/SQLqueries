@@ -33,10 +33,10 @@ namespace Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder
                         {
                             while (reader.Read())
                             {
-                                int customerId = reader.GetInt32(0);
-                                Customer customer = customerRepository.GetCustomerById(customerId);
-                                double invoiceTotal = (double)reader.GetDecimal(1);
-                                customerSpenders.Add(new CustomerSpender(customer, invoiceTotal));
+                                CustomerSpender customerSpender = new CustomerSpender();
+                                customerSpender.Customer = customerRepository.GetCustomerById(reader.GetInt32(0));
+                                customerSpender.Total = (double)reader.GetDecimal(1);
+                                customerSpenders.Add(customerSpender);
                             }
                         }
                     }

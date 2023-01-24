@@ -12,12 +12,5 @@ namespace Assignment2_BackEnd.Models
         public int InvoiceLineId { get; set; }
         public int TrackId { get; set; }
         public int InvoiceId { get; set; }
-
-        public InvoiceLine(int invoiceLineId, int trackId, int invoiceId)
-        {
-            InvoiceLineId = invoiceLineId;
-            TrackId = trackId;
-            InvoiceId = invoiceId;
-        }
     }
 }

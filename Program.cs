@@ -14,6 +14,15 @@ class Program
         ICustomerCountryRepository customerCountryRepository = new CustomerCountryRepository();
         ICustomerSpenderRepository customerSpenderRepository = new CustomerSpenderRepository();
         ICustomerGenreRepository customerGenreRepository = new CustomerGenreRepository();
-        ActionManager.printCustomersAndTheirInvoiceTotal(customerSpenderRepository);
+        //ActionManager.PrintAllCustomers(customerRepository);
+        //ActionManager.PrintPageOfCustomer(customerRepository);
+        //ActionManager.PrintCustomerById(customerRepository);
+        //ActionManager.PrintCustomerByFirstNameAndLastName(customerRepository);
+        //ActionManager.insertCustomer(customerRepository);
+        //ActionManager.updateCustomer(customerRepository);
+        //ActionManager.deleteCustomer(customerRepository);
+        //ActionManager.printCountriesAndNumberOfCustomers(customerCountryRepository);
+        //ActionManager.printCustomersAndTheirInvoiceTotal(customerSpenderRepository);
+        //ActionManager.printListOfFavoriteCustomerGenres(customerGenreRepository);
     }
 }

@@ -24,7 +24,6 @@ namespace Assignment2_BackEnd
         public static void PrintCustomerById(ICustomerRepository customerRepository)
         {
             PrintCustomer(customerRepository.GetCustomerById(10));
-            PrintCustomer(customerRepository.GetCustomerByName("Kara", "Nielsen"));
         }
         public static void PrintCustomerByFirstNameAndLastName(ICustomerRepository customerRepository)
         {
@@ -34,12 +33,12 @@ namespace Assignment2_BackEnd
         {
             Customer customer = new Customer()
             {
-                FirstName = "Kimberly",
-                LastName = "Colaste",
-                Country = "Norway",
-                PostalCode = "1111",
-                Phone = "99878991",
-                Email = "kimberly@gmail.com"
+                FirstName = "",
+                LastName = "",
+                Country = "",
+                PostalCode = "",
+                Phone = "",
+                Email = ""
             };
             if (customerRepository.AddCustomer(customer))
             {
@@ -63,13 +62,20 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            customerRepository.UpdateCustomer(customerToUpdate);
+            if (customerRepository.AddCustomer(customerToUpdate))
+            {
+                Console.WriteLine("Customer was updated!");
+            }
+            else
+            {
+                Console.WriteLine("Customer was not updated!");
+            }
         }
         public static void deleteCustomer(ICustomerRepository customerRepository)
         {
             Customer customerToDelete = new Customer()
             {
-                CustomerId = 1,
+                CustomerId = 64,
                 FirstName = "",
                 LastName = "",
                 Country = "",
@@ -77,7 +83,14 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            customerRepository.DeleteCustomer(customerToDelete);
+            if (customerRepository.DeleteCustomer(customerToDelete))
+            {
+                Console.WriteLine("Customer was deleted!");
+            }
+            else
+            {
+                Console.WriteLine("Customer was not deleted!");
+            }
         }
         public static void printCountriesAndNumberOfCustomers(ICustomerCountryRepository customerCountryRepository)
         {
@@ -92,7 +105,9 @@ namespace Assignment2_BackEnd
             List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerSpenderRepository.GetHighestSpenders();
             Console.WriteLine("List of customers and their invoice total:");
             listOfCustomersAndTheirInvoiceTotal
-                .ForEach(item => Console.WriteLine($"ID({item.Customer.CustomerId}),First name ({item.Customer.FirstName}) : {item.Total}"));
+                .ForEach(item => Console.WriteLine(
+                    $"ID({item.Customer.CustomerId})," +
+                    $"First name ({item.Customer.FirstName}) : {item.Total}"));
         }
         public static void printListOfFavoriteCustomerGenres(ICustomerGenreRepository customerGenreRepository)
         {

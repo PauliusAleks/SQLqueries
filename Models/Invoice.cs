@@ -12,12 +12,5 @@ namespace Assignment2_BackEnd.Models
         public int InvoiceId { get; set; }
         public int CustomerId { get; set; }
         public double Total { get; set; }
-        public Invoice() { }
-        public Invoice(int invoiceId, int customerId, double total)
-        {
-            InvoiceId = invoiceId;
-            CustomerId = customerId;
-            Total = total;
-        }
     }
 }

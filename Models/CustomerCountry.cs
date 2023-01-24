@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Models
 {
-    public class CustomerCountry : Customer
+    public class CustomerCountry
     {
+        public string Country { get; set; }
         public int NumberOfCustomers { get; set; }
-        public CustomerCountry(string country, int numberOfCustomers)
-        {
-            Country = country;
-            NumberOfCustomers = numberOfCustomers;
-        }
     }
 }
