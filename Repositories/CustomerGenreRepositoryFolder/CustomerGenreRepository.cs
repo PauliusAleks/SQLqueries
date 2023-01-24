@@ -1,7 +1,9 @@
 ﻿using Assignment2_BackEnd.Models;
+using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ namespace Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder
         public List<CustomerGenre> GetFavoriteGenre(Customer customer)
         {
             List<CustomerGenre> resultList = new List<CustomerGenre>();
-            string sqlQuery = "SELECT Genre.Name FROM Customer " +
+            string sqlQuery = "SELECT Genre.Name, SUM(InvoiceLine.Quantity) as 'QuanityRecordsBought' FROM Customer " +
                               "INNER JOIN Invoice " +
                               "ON Customer.CustomerId = Invoice.CustomerId " +
                               "INNER JOIN InvoiceLine " +
@@ -24,7 +26,7 @@ namespace Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder
                               "ON Track.GenreId = Genre.GenreId " +
                               "WHERE Customer.CustomerId = @CustomerId " +
                               "GROUP BY Genre.Name " +
-                              "ORDER BY COUNT(Genre.name) DESC ";
+                              "ORDER BY SUM(InvoiceLine.Quantity) DESC ";
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
@@ -38,8 +40,10 @@ namespace Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder
                             while (reader.Read())
                             {
                                 CustomerGenre customerGenre = new CustomerGenre();
-                                String genreName = reader.IsDBNull(0) ? "NULL" : reader.GetString(0);
+                                string genreName = reader.IsDBNull(0) ? "NULL" : reader.GetString(0);
+                                int quanitityFavoriteGenreRecordsBought = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
                                 customerGenre.GenreName = genreName;
+                                customerGenre.QuanitityFavoriteGenreRecordsBought = quanitityFavoriteGenreRecordsBought;
                                 resultList.Add(customerGenre);
                             }
                         }

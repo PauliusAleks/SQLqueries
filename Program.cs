@@ -23,6 +23,6 @@ class Program
         //ActionManager.deleteCustomer(customerRepository);
         //ActionManager.printCountriesAndNumberOfCustomers(customerCountryRepository);
         //ActionManager.printCustomersAndTheirInvoiceTotal(customerSpenderRepository);
-        //ActionManager.printListOfFavoriteCustomerGenres(customerGenreRepository);
+        ActionManager.printListOfFavoriteCustomerGenres(customerGenreRepository);
     }
 }

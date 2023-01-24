@@ -113,7 +113,7 @@ namespace Assignment2_BackEnd
         {
             Customer customerToFindGenres = new Customer()
             {
-                CustomerId = 1,
+                CustomerId = 12,
                 FirstName = "",
                 LastName = "",
                 Country = "",
@@ -121,8 +121,17 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            customerGenreRepository.GetFavoriteGenre(customerToFindGenres)
-                .ForEach(s => Console.WriteLine(s.GenreName));
+            List<CustomerGenre> customerGenre = customerGenreRepository.GetFavoriteGenre(customerToFindGenres);
+
+            if (customerGenre[0].QuanitityFavoriteGenreRecordsBought == customerGenre[1].QuanitityFavoriteGenreRecordsBought)
+            {
+                Console.WriteLine(customerGenre[0].GenreName);
+                Console.WriteLine(customerGenre[1].GenreName);
+            }
+            else
+            {
+                Console.WriteLine(customerGenre[0].GenreName);
+            }
         }
         public static void PrintCustomers(List<Customer> customers)
         {
