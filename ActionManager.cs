@@ -95,7 +95,6 @@ namespace Assignment2_BackEnd
             Console.WriteLine("List of countries and number of customers.");
             listOfCountriesAndNumberOfCustomers
                 .ForEach(item => Console.WriteLine($"{item.Country} : {item.NumberOfCustomers}"));
-
         }
         public static void printCustomersAndTheirInvoiceTotal(ICustomerRepository customerRepository)
         {

@@ -7,7 +7,6 @@ class Program
     static public void Main(string[] args)
     {
         ICustomerRepository customerRepository = new CustomerRepository();
-
         //ActionManager.PrintAllCustomers(customerRepository);
         //ActionManager.PrintPageOfCustomer(customerRepository);
         //ActionManager.PrintCustomerById(customerRepository);
@@ -17,6 +16,6 @@ class Program
         //ActionManager.deleteCustomer(customerRepository);
         //ActionManager.printCountriesAndNumberOfCustomers(customerRepository);
         //ActionManager.printCustomersAndTheirInvoiceTotal(customerRepository);
-        //ActionManager.printListOfFavoriteCustomerGenres(customerRepository);
+        ActionManager.printListOfFavoriteCustomerGenres(customerRepository);
     }
 }

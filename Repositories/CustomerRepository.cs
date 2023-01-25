@@ -75,9 +75,8 @@ namespace Assignment2_BackEnd.Repositories
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                Console.WriteLine(ex.Message);
             }
-
             return customerSpenders;
         }
         public IEnumerable<CustomerGenre> GetFavoriteGenre(Customer customer)
@@ -124,8 +123,6 @@ namespace Assignment2_BackEnd.Repositories
             }
             return resultList;
         }
-
-
         public bool Add(Customer customer)
         {
             bool success = false;

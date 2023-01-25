@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Repositories
 {
-    public interface IRepository<T, U, V, A>
+    public interface IRepository<T>
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
