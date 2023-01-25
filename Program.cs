@@ -1,6 +1,6 @@
 ﻿using Assignment2_BackEnd;
 using Assignment2_BackEnd.Models;
-using Assignment2_BackEnd.Repositories;
+using Assignment2_BackEnd.DataAccess;
 using System;
 class Program
 {

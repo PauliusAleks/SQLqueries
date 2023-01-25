@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories
+namespace Assignment2_BackEnd.DataAccess
 {
     public interface IRepository<T>
     {
