@@ -1,7 +1,9 @@
 ﻿using Assignment2_BackEnd.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -95,8 +97,8 @@ namespace Assignment2_BackEnd.DataAccess
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@FirstName", firstName);
-                        command.Parameters.AddWithValue("@LastName", lastName);
+                        command.Parameters.AddWithValue("@FirstName", firstName.IsNullOrEmpty() ? "NULL" : firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName.IsNullOrEmpty() ? "NULL" : lastName);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -173,9 +175,9 @@ namespace Assignment2_BackEnd.DataAccess
                     {
                         command.Parameters.AddWithValue("@FirstName", customer.FirstName);
                         command.Parameters.AddWithValue("@LastName", customer.LastName);
-                        command.Parameters.AddWithValue("@Country", customer.Country);
-                        command.Parameters.AddWithValue("@PostalCode", customer.PostalCode);
-                        command.Parameters.AddWithValue("@Phone", customer.Phone);
+                        command.Parameters.AddWithValue("@Country", customer.Country.IsNullOrEmpty() ? "NULL" : customer.Country);
+                        command.Parameters.AddWithValue("@PostalCode", customer.PostalCode.IsNullOrEmpty() ? "NULL" : customer.PostalCode);
+                        command.Parameters.AddWithValue("@Phone", customer.Phone.IsNullOrEmpty() ? "NULL" : customer.Phone);
                         command.Parameters.AddWithValue("@Email", customer.Email);
                         success = command.ExecuteNonQuery() > 0 ? true : false;
                     }
@@ -203,9 +205,9 @@ namespace Assignment2_BackEnd.DataAccess
                         command.Parameters.AddWithValue("@CustomerId", customer.CustomerId);
                         command.Parameters.AddWithValue("@FirstName", customer.FirstName);
                         command.Parameters.AddWithValue("@LastName", customer.LastName);
-                        command.Parameters.AddWithValue("@Country", customer.Country);
-                        command.Parameters.AddWithValue("@PostalCode", customer.PostalCode);
-                        command.Parameters.AddWithValue("@Phone", customer.Phone);
+                        command.Parameters.AddWithValue("@Country", customer.Country.IsNullOrEmpty() ? "NULL" : customer.Country);
+                        command.Parameters.AddWithValue("@PostalCode", customer.PostalCode.IsNullOrEmpty() ? "NULL" : customer.PostalCode);
+                        command.Parameters.AddWithValue("@Phone", customer.Phone.IsNullOrEmpty() ? "NULL" : customer.Phone);
                         command.Parameters.AddWithValue("@Email", customer.Email);
                         success = command.ExecuteNonQuery() > 0 ? true : false;
                     }

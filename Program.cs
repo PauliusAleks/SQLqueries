@@ -16,6 +16,6 @@ class Program
         //ActionManager.deleteCustomer(customerRepository);
         //ActionManager.DisplayCountriesAndNumberOfCustomers(customerRepository);
         //ActionManager.DisplayCustomersAndTheirInvoiceTotal(customerRepository);
-        ActionManager.DisplayListOfFavoriteCustomerGenres(customerRepository);
+        //ActionManager.DisplayListOfFavoriteCustomerGenres(customerRepository);
     }
 }
