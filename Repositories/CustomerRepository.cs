@@ -172,7 +172,7 @@ namespace Assignment2_BackEnd.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message); ;
+                Console.WriteLine(ex.Message);
             }
             return success;
         }
@@ -242,9 +242,9 @@ namespace Assignment2_BackEnd.Repositories
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine(ex.Message);
             }
             return customer;
         }
@@ -255,28 +255,36 @@ namespace Assignment2_BackEnd.Repositories
             string sqlQuery = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer " +
                               $"WHERE FirstName LIKE @FirstName " +
                               $"AND LastName LIKE @LastName";
-            using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
+            try
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
                 {
-                    command.Parameters.AddWithValue("@FirstName", firstName);
-                    command.Parameters.AddWithValue("@LastName", lastName);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
-                        while (reader.Read())
+                        command.Parameters.AddWithValue("@FirstName", firstName);
+                        command.Parameters.AddWithValue("@LastName", lastName);
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            customer.CustomerId = reader.GetInt32(0);
-                            customer.FirstName = reader.GetString(1);
-                            customer.LastName = reader.GetString(2);
-                            customer.Country = reader.IsDBNull(3) ? "NULL" : reader.GetString(3);
-                            customer.PostalCode = reader.IsDBNull(4) ? "NULL" : reader.GetString(4);
-                            customer.Phone = reader.IsDBNull(5) ? "NULL" : reader.GetString(5);
-                            customer.Email = reader.GetString(6);
+                            while (reader.Read())
+                            {
+                                customer.CustomerId = reader.GetInt32(0);
+                                customer.FirstName = reader.GetString(1);
+                                customer.LastName = reader.GetString(2);
+                                customer.Country = reader.IsDBNull(3) ? "NULL" : reader.GetString(3);
+                                customer.PostalCode = reader.IsDBNull(4) ? "NULL" : reader.GetString(4);
+                                customer.Phone = reader.IsDBNull(5) ? "NULL" : reader.GetString(5);
+                                customer.Email = reader.GetString(6);
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             return customer;
         }
 
