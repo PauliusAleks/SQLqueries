@@ -8,11 +8,125 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
+namespace Assignment2_BackEnd.Repositories
 {
     internal class CustomerRepository : ICustomerRepository
     {
-        public bool AddCustomer(Customer customer)
+        public IEnumerable<CustomerCountry> GetCountriesWithNumberOfCustomers()
+        {
+            List<CustomerCountry> allCountriesWithCustomerNumber = new List<CustomerCountry>();
+            string sqlQuery = "SELECT Country, COUNT(*) FROM Customer " +
+                              "GROUP BY Country " +
+                              "ORDER BY COUNT(*) DESC";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CustomerCountry customerCountry = new CustomerCountry();
+                                customerCountry.Country = reader.IsDBNull(0) ? "NULL" : reader.GetString(0);
+                                customerCountry.NumberOfCustomers = reader.GetInt32(1);
+                                allCountriesWithCustomerNumber.Add(customerCountry);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return allCountriesWithCustomerNumber;
+        }
+        public IEnumerable<CustomerSpender> GetHighestSpenders()
+        {
+
+            List<CustomerSpender> customerSpenders = new List<CustomerSpender>();
+            string sqlQuery = "SELECT Customer.CustomerId, SUM(Invoice.Total) FROM Customer " +
+                              "INNER JOIN Invoice " +
+                              "ON Customer.CustomerId = Invoice.CustomerId " +
+                              "GROUP BY Customer.CustomerId " +
+                              "ORDER BY SUM(Invoice.Total) DESC";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CustomerSpender customerSpender = new CustomerSpender();
+                                customerSpender.Customer = GetById(reader.GetInt32(0));
+                                customerSpender.Total = (double)reader.GetDecimal(1);
+                                customerSpenders.Add(customerSpender);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+
+            return customerSpenders;
+        }
+        public IEnumerable<CustomerGenre> GetFavoriteGenre(Customer customer)
+        {
+            List<CustomerGenre> resultList = new List<CustomerGenre>();
+            string sqlQuery = "SELECT Genre.Name, SUM(InvoiceLine.Quantity) as 'QuanityRecordsBought' FROM Customer " +
+                              "INNER JOIN Invoice " +
+                              "ON Customer.CustomerId = Invoice.CustomerId " +
+                              "INNER JOIN InvoiceLine " +
+                              "ON Invoice.InvoiceId = InvoiceLine.InvoiceId " +
+                              "INNER JOIN Track " +
+                              "ON InvoiceLine.TrackId = Track.TrackId " +
+                              "INNER JOIN Genre " +
+                              "ON Track.GenreId = Genre.GenreId " +
+                              "WHERE Customer.CustomerId = @CustomerId " +
+                              "GROUP BY Genre.Name " +
+                              "ORDER BY SUM(InvoiceLine.Quantity) DESC ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionHelper.GetConnectionString()))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@CustomerId", customer.CustomerId);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                CustomerGenre customerGenre = new CustomerGenre();
+                                string genreName = reader.IsDBNull(0) ? "NULL" : reader.GetString(0);
+                                int quanitityFavoriteGenreRecordsBought = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                                customerGenre.GenreName = genreName;
+                                customerGenre.QuanitityFavoriteGenreRecordsBought = quanitityFavoriteGenreRecordsBought;
+                                resultList.Add(customerGenre);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return resultList;
+        }
+
+
+        public bool Add(Customer customer)
         {
             bool success = false;
             string sqlQuery = "INSERT INTO Customer (FirstName, LastName, Country, PostalCode, Phone, Email)" +
@@ -40,7 +154,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return success;
         }
-        public bool DeleteCustomer(Customer customer)
+
+        public bool Delete(Customer customer)
         {
             bool success = false;
             string sqlQuery = $"DELETE FROM Customer WHERE CustomerId = @customerId";
@@ -62,7 +177,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return success;
         }
-        public List<Customer> GetAllCustomers()
+
+        public IEnumerable<Customer> GetAll()
         {
             List<Customer> customers = new List<Customer>();
             string sqlQuery = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer";
@@ -97,7 +213,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return customers;
         }
-        public Customer GetCustomerById(int customerId)
+
+        public Customer GetById(int customerId)
         {
             Customer customer = new Customer();
             string sqlQuery = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer " +
@@ -162,7 +279,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return customer;
         }
-        public List<Customer> GetPageOfCustomers(int limit, int offset)
+
+        public IEnumerable<Customer> GetPageOfCustomers(int limit, int offset)
         {
             List<Customer> customers = new List<Customer>();
             string sqlQuery = "SELECT CustomerId, FirstName, LastName, Country, PostalCode, Phone, Email FROM Customer " +
@@ -202,7 +320,8 @@ namespace Assignment2_BackEnd.Repositories.CustomerRepositoryFolder
             }
             return customers;
         }
-        public bool UpdateCustomer(Customer customer)
+
+        public bool Update(Customer customer)
         {
             bool success = false;
             string sqlQuery = $"UPDATE Customer SET FirstName = @FirstName , LastName = @LastName ," +

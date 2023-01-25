@@ -9,6 +9,7 @@ namespace Assignment2_BackEnd.Models
 {
     public class CustomerSpender
     {
+
         public Customer Customer { get; set; }
         public double Total { get; set; }
 

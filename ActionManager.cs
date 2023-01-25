@@ -1,8 +1,5 @@
 ﻿using Assignment2_BackEnd.Models;
-using Assignment2_BackEnd.Repositories.CustomerCountryRepositoryFolder;
-using Assignment2_BackEnd.Repositories.CustomerGenreRepositoryFolder;
-using Assignment2_BackEnd.Repositories.CustomerRepositoryFolder;
-using Assignment2_BackEnd.Repositories.CustomerSpenderRepositoryFolder;
+using Assignment2_BackEnd.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +12,15 @@ namespace Assignment2_BackEnd
     {
         public static void PrintAllCustomers(ICustomerRepository customerRepository)
         {
-            PrintCustomers(customerRepository.GetAllCustomers());
+            PrintCustomers(customerRepository.GetAll().ToList());
         }
         public static void PrintPageOfCustomer(ICustomerRepository customerRepository)
         {
-            PrintCustomers(customerRepository.GetPageOfCustomers(10, 10));
+            PrintCustomers(customerRepository.GetPageOfCustomers(10, 10).ToList());
         }
         public static void PrintCustomerById(ICustomerRepository customerRepository)
         {
-            PrintCustomer(customerRepository.GetCustomerById(10));
+            PrintCustomer(customerRepository.GetById(10));
         }
         public static void PrintCustomerByFirstNameAndLastName(ICustomerRepository customerRepository)
         {
@@ -40,7 +37,7 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            if (customerRepository.AddCustomer(customer))
+            if (customerRepository.Add(customer) == true)
             {
                 Console.WriteLine("Customer added!");
                 PrintCustomer(customer);
@@ -62,7 +59,7 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            if (customerRepository.AddCustomer(customerToUpdate))
+            if (customerRepository.Update(customerToUpdate) == true)
             {
                 Console.WriteLine("Customer was updated!");
             }
@@ -83,7 +80,7 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            if (customerRepository.DeleteCustomer(customerToDelete))
+            if (customerRepository.Delete(customerToDelete) == true)
             {
                 Console.WriteLine("Customer was deleted!");
             }
@@ -92,24 +89,24 @@ namespace Assignment2_BackEnd
                 Console.WriteLine("Customer was not deleted!");
             }
         }
-        public static void printCountriesAndNumberOfCustomers(ICustomerCountryRepository customerCountryRepository)
+        public static void printCountriesAndNumberOfCustomers(ICustomerRepository customerRepository)
         {
-            List<CustomerCountry> listOfCountriesAndNumberOfCustomers = customerCountryRepository.GetCountryNames();
+            List<CustomerCountry> listOfCountriesAndNumberOfCustomers = customerRepository.GetCountriesWithNumberOfCustomers().ToList();
             Console.WriteLine("List of countries and number of customers.");
             listOfCountriesAndNumberOfCustomers
                 .ForEach(item => Console.WriteLine($"{item.Country} : {item.NumberOfCustomers}"));
 
         }
-        public static void printCustomersAndTheirInvoiceTotal(ICustomerSpenderRepository customerSpenderRepository)
+        public static void printCustomersAndTheirInvoiceTotal(ICustomerRepository customerRepository)
         {
-            List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerSpenderRepository.GetHighestSpenders();
+            List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerRepository.GetHighestSpenders().ToList();
             Console.WriteLine("List of customers and their invoice total:");
             listOfCustomersAndTheirInvoiceTotal
                 .ForEach(item => Console.WriteLine(
                     $"ID({item.Customer.CustomerId})," +
                     $"First name ({item.Customer.FirstName}) : {item.Total}"));
         }
-        public static void printListOfFavoriteCustomerGenres(ICustomerGenreRepository customerGenreRepository)
+        public static void printListOfFavoriteCustomerGenres(ICustomerRepository customerRepository)
         {
             Customer customerToFindGenres = new Customer()
             {
@@ -121,7 +118,7 @@ namespace Assignment2_BackEnd
                 Phone = "",
                 Email = ""
             };
-            List<CustomerGenre> customerGenre = customerGenreRepository.GetFavoriteGenre(customerToFindGenres);
+            List<CustomerGenre> customerGenre = customerRepository.GetFavoriteGenre(customerToFindGenres).ToList();
 
             if (customerGenre[0].QuanitityFavoriteGenreRecordsBought == customerGenre[1].QuanitityFavoriteGenreRecordsBought)
             {
