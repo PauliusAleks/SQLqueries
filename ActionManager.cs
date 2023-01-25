@@ -10,19 +10,19 @@ namespace Assignment2_BackEnd
 {
     public class ActionManager
     {
-        public static void PrintAllCustomers(ICustomerRepository customerRepository)
+        public static void DisplayAllCustomers(ICustomerRepository customerRepository)
         {
             PrintCustomers(customerRepository.GetAll().ToList());
         }
-        public static void PrintPageOfCustomer(ICustomerRepository customerRepository)
+        public static void DisplayPageOfCustomer(ICustomerRepository customerRepository)
         {
             PrintCustomers(customerRepository.GetPageOfCustomers(10, 10).ToList());
         }
-        public static void PrintCustomerById(ICustomerRepository customerRepository)
+        public static void DisplayCustomerById(ICustomerRepository customerRepository)
         {
             PrintCustomer(customerRepository.GetById(10));
         }
-        public static void PrintCustomerByFirstNameAndLastName(ICustomerRepository customerRepository)
+        public static void DisplayCustomerByFirstNameAndLastName(ICustomerRepository customerRepository)
         {
             PrintCustomer(customerRepository.GetCustomerByName("Kara", "Nielsen"));
         }
@@ -89,14 +89,14 @@ namespace Assignment2_BackEnd
                 Console.WriteLine("Customer was not deleted!");
             }
         }
-        public static void printCountriesAndNumberOfCustomers(ICustomerRepository customerRepository)
+        public static void DisplayCountriesAndNumberOfCustomers(ICustomerRepository customerRepository)
         {
             List<CustomerCountry> listOfCountriesAndNumberOfCustomers = customerRepository.GetCountriesWithNumberOfCustomers().ToList();
             Console.WriteLine("List of countries and number of customers.");
             listOfCountriesAndNumberOfCustomers
                 .ForEach(item => Console.WriteLine($"{item.Country} : {item.NumberOfCustomers}"));
         }
-        public static void printCustomersAndTheirInvoiceTotal(ICustomerRepository customerRepository)
+        public static void DisplayCustomersAndTheirInvoiceTotal(ICustomerRepository customerRepository)
         {
             List<CustomerSpender> listOfCustomersAndTheirInvoiceTotal = customerRepository.GetHighestSpenders().ToList();
             Console.WriteLine("List of customers and their invoice total:");
@@ -105,7 +105,7 @@ namespace Assignment2_BackEnd
                     $"ID({item.Customer.CustomerId})," +
                     $"First name ({item.Customer.FirstName}) : {item.Total}"));
         }
-        public static void printListOfFavoriteCustomerGenres(ICustomerRepository customerRepository)
+        public static void DisplayListOfFavoriteCustomerGenres(ICustomerRepository customerRepository)
         {
             Customer customerToFindGenres = new Customer()
             {

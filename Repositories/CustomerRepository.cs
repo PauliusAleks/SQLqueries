@@ -44,9 +44,9 @@ namespace Assignment2_BackEnd.Repositories
             }
             return allCountriesWithCustomerNumber;
         }
+
         public IEnumerable<CustomerSpender> GetHighestSpenders()
         {
-
             List<CustomerSpender> customerSpenders = new List<CustomerSpender>();
             string sqlQuery = "SELECT Customer.CustomerId, SUM(Invoice.Total) FROM Customer " +
                               "INNER JOIN Invoice " +
@@ -79,6 +79,7 @@ namespace Assignment2_BackEnd.Repositories
             }
             return customerSpenders;
         }
+
         public IEnumerable<CustomerGenre> GetFavoriteGenre(Customer customer)
         {
             List<CustomerGenre> resultList = new List<CustomerGenre>();
@@ -123,6 +124,7 @@ namespace Assignment2_BackEnd.Repositories
             }
             return resultList;
         }
+
         public bool Add(Customer customer)
         {
             bool success = false;
@@ -246,6 +248,7 @@ namespace Assignment2_BackEnd.Repositories
             }
             return customer;
         }
+
         public Customer GetCustomerByName(string firstName, string lastName)
         {
             Customer customer = new Customer();
