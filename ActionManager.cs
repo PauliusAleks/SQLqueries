@@ -161,16 +161,7 @@ namespace Assignment2_BackEnd
                 Email = ""
             };
             List<CustomerGenre> customerGenre = customerRepository.GetFavoriteGenre(customerToFindGenres).ToList();
-
-            if (customerGenre[0].QuanitityFavoriteGenreRecordsBought == customerGenre[1].QuanitityFavoriteGenreRecordsBought)
-            {
-                Console.WriteLine(customerGenre[0].GenreName);
-                Console.WriteLine(customerGenre[1].GenreName);
-            }
-            else
-            {
-                Console.WriteLine(customerGenre[0].GenreName);
-            }
+            customerGenre.ForEach(genre => Console.WriteLine(genre.GenreName));
         }
         /// <summary>
         /// Common method for printing several customers

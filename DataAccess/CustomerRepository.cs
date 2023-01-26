@@ -453,7 +453,7 @@ namespace Assignment2_BackEnd.DataAccess
         public IEnumerable<CustomerGenre> GetFavoriteGenre(Customer customer)
         {
             List<CustomerGenre> resultList = new List<CustomerGenre>();
-            string sqlQuery = "SELECT Genre.Name, COUNT(Genre.Name) as 'QuanityGenresBought' FROM Customer " +
+            string sqlQuery = "SELECT TOP(1) WITH TIES Genre.Name, COUNT(Genre.Name) as 'QuanityGenresBought' FROM Customer " +
                               "INNER JOIN Invoice " +
                               "ON Customer.CustomerId = Invoice.CustomerId " +
                               "INNER JOIN InvoiceLine " +
