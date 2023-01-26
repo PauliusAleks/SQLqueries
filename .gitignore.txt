@@ -1,9 +1,0 @@
-.vscode
-.vs/
-bin/
-obj/
-.idea
-node_modules
-*.log
-.DS_STORE
-thumbs.db
