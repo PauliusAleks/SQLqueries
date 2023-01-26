@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.DataAccess
 {
-    internal class ConnectionHelper
+    /// <summary>
+    /// This class is used to generate a connection string by setting proper values to SqlConnectionStringBuilder parameters
+    /// like DataSource(Server Name), InitialCatalog(Database Name) and IntegratedSecurity(Authentication).
+    /// TrustServerCertificate was set to true, to avoid an error that occurs during the login process to the server.
+    /// </summary>
+    public class ConnectionHelper
     {
         public static string GetConnectionString()
         {

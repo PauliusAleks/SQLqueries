@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Models
 {
+    /// <summary>
+    /// Model for the data structure used when finding what genre a customer has as its most popular
+    /// </summary>
     public class CustomerGenre
     {
         public Customer Customer { get; set; }

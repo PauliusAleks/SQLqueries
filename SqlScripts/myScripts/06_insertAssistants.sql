@@ -1,5 +1,5 @@
 USE [SuperheroesDb];
-
+--Inserting values to Assitant table.
 INSERT INTO [Assistant] ([Name], [HeroId])
 VALUES
 	('Assistant1',1),

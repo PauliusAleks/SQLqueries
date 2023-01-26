@@ -7,6 +7,9 @@ using Assignment2_BackEnd.Models;
 
 namespace Assignment2_BackEnd.Models
 {
+    /// <summary>
+    /// Model for the Track table in the ChinookDB
+    /// </summary>
     public class Track
     {
         public int TrackId { get; set; }

@@ -4,8 +4,12 @@ using Assignment2_BackEnd.DataAccess;
 using System;
 class Program
 {
+    ///<Summary>
+    /// Main method to run methods from ActionManager and see the results.
+    ///</Summary>
     static public void Main(string[] args)
     {
+
         ICustomerRepository customerRepository = new CustomerRepository();
         //ActionManager.DisplayAllCustomers(customerRepository);
         //ActionManager.DisplayPageOfCustomer(customerRepository);

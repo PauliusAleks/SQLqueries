@@ -7,6 +7,9 @@ using Assignment2_BackEnd.Models;
 
 namespace Assignment2_BackEnd.Models
 {
+    /// <summary>
+    /// Model for the InvoiceLine table in the ChinookDB
+    /// </summary>
     public class InvoiceLine
     {
         public int InvoiceLineId { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Models
 {
+    /// <summary>
+    /// Model for the data structure of a Customer based on the Customer table in the ChinookDB
+    /// </summary>
     public class Customer
     {
         public int CustomerId { get; set; }

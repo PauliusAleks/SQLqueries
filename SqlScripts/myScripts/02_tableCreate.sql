@@ -1,3 +1,4 @@
+--Queries to create tables and give them columns.
 use [SuperheroesDb];
 
 CREATE TABLE [Superhero](

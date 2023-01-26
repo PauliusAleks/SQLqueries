@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment2_BackEnd.Models
 {
+    /// <summary>
+    /// Model for the Genre table in the ChinookDB
+    /// </summary>
     public class Genre
     {
         public int GenreId { get; set; }

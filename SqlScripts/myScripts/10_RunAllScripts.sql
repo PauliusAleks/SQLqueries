@@ -1,3 +1,4 @@
+--Script to run all of the queries created in part 1 of the assignment 2.
 GO
 CREATE DATABASE [SuperheroesDb];
 
