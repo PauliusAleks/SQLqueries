@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2_BackEnd.Repositories
+namespace Assignment2_BackEnd.DataAccess
 {
-    public interface IRepository<T, U, V, A>
+    public interface IRepository<T>
     {
         T GetById(int id);
         IEnumerable<T> GetAll();
