@@ -21,8 +21,8 @@ And finally the CustomerGenre is used for a given customers favorite genre.
 
 
 ## Usage
-The Querys can be run in a DBMS to create the databse and the C# code is run in visual studio by calling
-the methods from the action manager in the Main program
+The Querys can be run in a DBMS to create the databse and the C# code is run in Visual Studio by calling
+the methods from the action manager in the Main program.
 
 ## Technologies
 * C#
@@ -30,7 +30,8 @@ the methods from the action manager in the Main program
 * SQL Client
 * Microsoft SQL Server Management Studio
 
-## Db Diagram
+## Db Diagram - Chinook
+A diagram of the given database Chinook
 ![dbDiagram](https://gitlab.com/assignment2backend/backendassignment2/uploads/94a945d3b2eec5cda36a353c56e71927/dbDiagram.png)
 
 ## Contributers
