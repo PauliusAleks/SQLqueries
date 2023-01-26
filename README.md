@@ -1,4 +1,4 @@
-# Assignment 2 - SQL Scripts and SQL Data Reading 
+<center style="font-size: 40px">Assignment 2 - SQL Scripts and SQL Data Reading </center>
 
 Second assignment in Noroff .NET course. Data Persistence and Access module
 
