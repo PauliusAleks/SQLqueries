@@ -19,8 +19,12 @@ This includes CustomerCountry which is used to return the number of customers in
 CustomerSpender is used to return what customers have the largest total in the invoice table.
 And finally the CustomerGenre is used for a given customers favorite genre.
 
+## Project status
+All of the requierments are completed. The further use of this project can be implementing repositories for every other table in the ChinookDb.
+This project could be made using EntityFramework.
 
 ## Usage
+Microsoft.Data.SqlCLient NuGet package must be installed.
 The Querys can be run in a DBMS to create the databse and the C# code is run in Visual Studio by calling
 the methods from the action manager in the Main program.
 
